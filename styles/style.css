@@ -21,6 +21,7 @@
   linear-gradient(to bottom, transparent 50%, #d3d3d3 50%),
   linear-gradient(to bottom, #e7e7e7, #1a1a1a);
   background-size: 2px 2px, 2px 2px, cover;
+  font-family: var(--main-font), sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
