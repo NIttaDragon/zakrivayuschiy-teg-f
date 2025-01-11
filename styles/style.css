@@ -211,16 +211,13 @@ main {
 }
 
 .button::before {
-	content: "";
+  content: "";
 	position: absolute;
 	z-index: -1;
 	top: 0px;
 	left: 0px;
 	right: 0px;
 	bottom: -1px;
-}
-
-.button::before {
 	background: var(--themes-mainColor);
 	clip-path: inset(0 100% 0 0);
 	opacity: 1;
@@ -368,7 +365,7 @@ main {
 }
 
 .save svg {
-  width: 21px; 
+  width: 21px;
   margin-right: 8px;
 }
 
