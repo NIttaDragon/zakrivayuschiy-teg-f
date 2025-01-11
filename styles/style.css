@@ -87,6 +87,7 @@ main {
 }
 
 .cover {
+  width: 100%;
   margin: 1px 0;
   border-top: #000 2px solid;
   border-bottom: #000 2px solid;
@@ -98,42 +99,34 @@ main {
 }
 
 .free {
-  background-image: url("../svg/image.png");
   filter: blur(0.1rem);
 }
 
 .sprint1-1 {
-  background-image: url("../svg/4.jpg");
   filter: saturate(30%);
 }
 
 .sprint1-2 {
-  background-image: url("../svg/9.jpg");
   filter: brightness(150%);
 }
 
 .sprint2-1 {
-  background-image: url("../svg/12.jpg");
   filter: contrast(200%);
 }
 
 .sprint2-2 {
-  background-image: url("../svg/16.jpg");
   filter: hue-rotate(-45deg);
 }
 
 .sprint3-1 {
-  background-image: url("../svg/10.jpg");
   filter: invert(0.8);
 }
 
 .sprint3-2 {
-  background-image: url("../svg/14.jpg");
   filter: sepia(30%);
 }
 
 .now {
-  background-image: url("../svg/8.jpg");
   filter: brightness(150%) contrast(50%);
 }
 
