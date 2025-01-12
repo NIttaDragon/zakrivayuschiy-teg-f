@@ -64,7 +64,7 @@ main {
   flex-direction: column;
 }
 
-.section {
+.card {
   width: clamp(371px, 60%, 700px);
   margin: auto;
   background-color: #fff;
@@ -321,7 +321,7 @@ main {
   margin-right: 8px;
 }
 
-footer {
+.disc-button {
   width: clamp(371px, 48.6%, 700px);
   display: flex;
   justify-content: center;
@@ -400,7 +400,7 @@ body:has(#dialog-save[open]) {
     margin-bottom: 8px;
   }
 
-  footer {
+  .disc-button {
     margin: 50px auto 102px;
   }
 }
