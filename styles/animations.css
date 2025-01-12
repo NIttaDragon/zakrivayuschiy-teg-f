@@ -9,3 +9,46 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+@keyframes anim-core {
+  to {
+      fill: var(--heart-body);
+  }
+}
+
+@keyframes anim-body {
+  0% {
+      fill: var(--heart-body);
+  }
+  70% {
+    fill: var(--heart-body);
+  }
+  100% {
+    fill: var(--themes-mainColor);
+  }
+}
+
+@keyframes anim-heart {
+  0% {
+    scale: 1;
+  }
+  40% {
+    translate: -10% -10%;
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes anim-sparks {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

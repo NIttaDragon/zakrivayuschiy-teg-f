@@ -19,8 +19,9 @@
   linear-gradient(to right, transparent 50%, #d3d3d3 50%),
   linear-gradient(to bottom, transparent 50%, #d3d3d3 50%),
   linear-gradient(to bottom, #e7e7e7, #1a1a1a);
-  background-size: 2px 2px, 2px 2px, cover;
+  background-size: 4px 4px, 4px 4px, cover;
   font-family: var(--main-font), sans-serif;
+  margin: auto;
 }
 
 @supports (font-variation-settings: normal) {
@@ -30,10 +31,9 @@
 } 
 
 .header {
-  width: clamp(371px, 48.6%, 700px);
+  width: clamp(371px, 60%, 700px);
   margin: 102px auto 102px;
   background-color: #fff;
-  height: 364px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,28 +44,18 @@
 
 .title {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  padding-top: 128px;
 }
 
 .accent {
-  font-family: var(--second-font), monospace;
+  font-family: var(--second-font), fantasy;
 }
 
 .subtitle {
   font-size: 23px;
   text-transform: uppercase;
   text-align: center;
-}
-
-@media (width<=375px) {
-  .header {
-    width: 100%;
-    height: 327px;
-    margin-bottom: 98px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-  }
+  padding-bottom: 128px;
 }
 
 main {
@@ -98,35 +88,35 @@ main {
   aspect-ratio: 1 / 1;
 }
 
-.free {
+.filter-blur {
   filter: blur(0.1rem);
 }
 
-.sprint1-1 {
+.filter-saturate {
   filter: saturate(30%);
 }
 
-.sprint1-2 {
+.filter-brightness {
   filter: brightness(150%);
 }
 
-.sprint2-1 {
+.filter-contrast {
   filter: contrast(200%);
 }
 
-.sprint2-2 {
+.filter-huerotate {
   filter: hue-rotate(-45deg);
 }
 
-.sprint3-1 {
+.filter-invert {
   filter: invert(0.8);
 }
 
-.sprint3-2 {
+.filter-sepia {
   filter: sepia(30%);
 }
 
-.now {
+.filter-brightness_contrast {
   filter: brightness(150%) contrast(50%);
 }
 
@@ -140,27 +130,19 @@ main {
   font-size: 14px;
   position: absolute;
   color: #000;
-  -webkit-text-stroke: #fff 0.5px;
+  text-shadow: 0.5px 0.5px 0px #fff, 
+               -0.5px -0.5px 0px #fff, 
+               -0.5px 0.5px 0px #fff, 
+               0.5px -0.5px 0px #fff ;
   margin: 25px;
   right: 0;
-  filter: none;
 }
 
 @supports((text-stroke: #fff 0.5px) or (-webkit-text-stroke: #fff 0.5px)) {
   .tag {
-    font-size: 14px;
-    position: absolute;
-    color: #000;
     -webkit-text-stroke: #fff 0.5px;
-    margin: 25px;
-    right: 0;
-    filter: none;
-  }
-} 
-
-@media (width <= 375px) {
-  .tag {
-    margin: 23px 11px;
+    text-stroke: #fff 0.5px;
+    text-shadow: none;
   }
 }
 
@@ -177,7 +159,7 @@ main {
   display: flex;
   justify-content: right;
   padding: 0 25px 25px 0;
-  gap: 8px;
+  gap: 7px;
   align-items: center;
 }
 
@@ -198,11 +180,15 @@ main {
   border: none;
   padding: 0;
   font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 37px;
+  height: 37px;
 }
 
 .card__icon-button svg {
   width: 36px;
-  margin-right: 12px;
 }
 
 .button {
@@ -233,8 +219,12 @@ main {
 	clip-path: inset(0 0 0 0);
 }
 
-.button:hover {
+/*.button:hover {
 	color: white;
+}*/
+
+.button:hover .button__text {
+  mix-blend-mode: difference;
 }
 
 .button svg {
@@ -255,7 +245,7 @@ main {
 }
 
 .card__like-button:focus-visible {
-  border: 2px solid var(--themes-mainColor);;
+  border: 2px solid var(--themes-mainColor);
 }
 
 .like-icon {
@@ -272,101 +262,58 @@ main {
 }
 
 .core {
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s 0.03s linear;
 }
 
 .main-body {
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .card__icon-button:hover .core {
   fill: var(--themes-mainColor);
-  transition: fill 0.3s 0.03s ;
+  transition: fill 0.3s linear;
 }
 
 .card__icon-button:hover .main-body {
   fill: var(--themes-mainColor);
-  transition: fill 0.3s;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .card__icon-button:active .core {
   fill: var(--heart-body);
-  transition: fill 0.3s 0.03s ;
+  transition: fill 0.3s linear;
 }
 
 .card__icon-button:active .main-body {
   fill: var(--heart-body);
-  transition: fill 0.3s;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .is-liked .core {
-  animation: anim-core 0.3s 0.06s ease-in forwards;
+  animation: anim-core 0.3s /*0.06s*/ ease-in forwards;
 }
 
 .is-liked .main-body {
-  animation: anim-core 0.3s 0.26s ease-in forwards;
-}
-
-@keyframes anim-core {
-  to {
-      fill: var(--heart-body);
-  }
+  animation: anim-core 0.3s /*0.06s*/ ease-in forwards;
 }
 
 .is-liked .countur {
-  animation: anim-body 0.3s 0.56s ease-in forwards;
-}
-
-@keyframes anim-body {
-  0% {
-      fill: var(--heart-body);
-  }
-  70% {
-    fill: var(--heart-body);
-  }
-  100% {
-    fill: var(--themes-mainColor);
-  }
+  animation: anim-body 0.3s 0.36s ease-in forwards;
 }
 
 .is-liked .heart {
-  animation: anim-heart 0.3s 0.56s ease-in forwards;
-}
-
-@keyframes anim-heart {
-  0% {
-    scale: 1;
-  }
-  40% {
-    translate: -10% -10%;
-    scale: 1.25;
-  }
-  100% {
-    scale: 1;
-  }
+  animation: anim-heart 0.3s 0.26s ease-in forwards;
 }
 
 .is-liked .sparks {
-  animation: anim-sparks 0.3s 0.56s ease-in forwards;
-}
-
-@keyframes anim-sparks {
-  0% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  animation: anim-sparks 0.3s 0.26s ease-in forwards;
 }
 
 .save {
-  margin-top: 50px;
   font-size: 14px;
-  padding: 15px 20px;
-  min-width: 306px;
+  padding: 15px 19px;
+  min-width: 310px;
+  background-color: #fff;
 }
 
 .save svg {
@@ -374,32 +321,11 @@ main {
   margin-right: 8px;
 }
 
-@media (width<=375px) {
-  .save {
-    width: 306px;
-  }
-
-  .save .button__text {
-    text-wrap: nowrap;
-  }
-
-  .save svg {
-    margin-bottom: 8px;
-  }
-}
-
 footer {
   width: clamp(371px, 48.6%, 700px);
-  margin: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 105px;
-}
-
-@media (width <= 375px) {
-  footer {
-    margin-bottom: 102px;
-  }
+  margin: 48px auto 103px;
 }
 
 #dialog-save {
@@ -429,10 +355,52 @@ footer {
 }
 
 #dialog-save .button {
+  background-color: transparent;
   margin-top: 30px;
   padding: 9px 132px;
 }
 
 body:has(#dialog-save[open]) {
   overflow: hidden;
+}
+
+@media (width<=375px) {
+  .header {
+    width: 100%;
+    margin-bottom: 98px;
+  }
+
+  .title {
+    padding-top: 120px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    padding-bottom: 120px;
+  }
+
+  .tag {
+    margin: 23px 11px;
+  }
+
+  .save {
+    width: 306px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .save .button__text {
+    text-wrap: nowrap;
+  }
+
+  .save svg {
+    width: 28px;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  footer {
+    margin: 50px auto 102px;
+  }
 }
