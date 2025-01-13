@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./svg/floppy.ico" sizes="any">
-    <link rel="icon" href="./svg/floppy.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="./svg/floppy.png">
+    <link rel="icon" href="./svg/favicon.ico" sizes="any">
+    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./svg/favicon.png">
     <title>Закрывающий тег</title>
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
@@ -14,19 +14,19 @@
     <link rel="stylesheet" href="./styles/animations.css" />
   </head>
   <body class="page">
-    <header class="header">
+    <!--<header class="header">
       <h1 class="title accent">&lt;/HTML&gt;</h1>
       <p class="accent subtitle">Закрывающий тег</p>
-    </header>
+    </header>-->
     <main>
       <article class="card">
         <h2 class="card-title">Фритрек и нулевой спринт: Подготовка к работе</h2>
-        <div>
+        <!--<div>
           <div class="tag-wrapper">
             <p class="accent tag">START</p>
           </div>
           <img class="cover filter-blur" src="./images/image.png" alt="дом на колёсах в ночном лесу">
-        </div>
+        </div>-->
         <div class="paragraf">
           <p>Это было самое начало пути. На этом этапе важно было проникнуться основами и настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше будущее.</p>
           <p>Место для ваших воспоминаний о начале обучения: Было очень волнительно... Ведь окончание курса, по будующей профессии, как раз +- совпадало с окончанием университета, а значит сразу после можно идти работать)</p>
@@ -47,7 +47,7 @@
           </button>
         </div>
       </article>
-      <article class="card">
+      <!--<article class="card">
         <h2 class="card-title">1 спринт: Я — чистый лист</h2>
         <div>
           <div class="tag-wrapper">
@@ -242,27 +242,29 @@
             <span class="accent button__text">Like</span>
           </button>
         </div>
-      </article>
+      </article>-->
     </main>
     <div class="disc-button">
       <button class="save button" type="submit"
     onclick="window['dialog-save'].showModal();"
     aria-controls="dialog-save">
-      <svg viewBox="0 0 40 40">
+      <svg viewBox="0 0 40 40" class="floppy">
         <use href="./svg/floppy.svg#disceta"/>
       </svg>
-      <span class="accent button-text">Сохранить на память</span>
+      <span class="accent button__text">Сохранить на память</span>
     </button>
-    <dialog id="dialog-save">
+    <dialog id="dialog-save" class="accent dialog-save">
       <div class="dialog-wrapper">
         <svg viewBox="0 0 40 40">
           <use href="./svg/floppy.svg#disceta"/>
         </svg>
-        <h3 class="accent">
+        <h3 class="">
           ВСТАВЬТЕ ДИСКЕТУ, ЧТОБЫ ПРОДОЛЖИТЬ
         </h3>
       </div>
-      <button class="button accent" type="submit" onclick="window['dialog-save'].close()">OK</button>
+      <button class="button save-dialog" type="submit" onclick="window['dialog-save'].close()">
+        <span class="accent button__text">ОК</span>
+      </button>
     </dialog>
     </div>
     <script src="./scripts/like.js"></script>

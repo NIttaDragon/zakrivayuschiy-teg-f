@@ -16,9 +16,9 @@
   font-weight: var(--main-font-reg);
   background-color: #000;
   background-image: 
-  linear-gradient(to right, transparent 50%, #d3d3d3 50%),
-  linear-gradient(to bottom, transparent 50%, #d3d3d3 50%),
-  linear-gradient(to bottom, #e7e7e7, #1a1a1a);
+    linear-gradient(to right, transparent 50%, #d3d3d3 50%),
+    linear-gradient(to bottom, transparent 50%, #d3d3d3 50%),
+    linear-gradient(to bottom, #e7e7e7, #1a1a1a);
   background-size: 4px 4px, 4px 4px, cover;
   font-family: var(--main-font), sans-serif;
   margin: auto;
@@ -122,12 +122,13 @@ main {
 
 .tag-wrapper {
   position: relative;
-  mix-blend-mode: hard-light;
   z-index: 1;
 }
 
 .tag {
   font-size: 14px;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
   position: absolute;
   color: #000;
   text-shadow: 0.5px 0.5px 0px #fff, 
@@ -173,6 +174,11 @@ main {
   font-size: 14px;
   line-height: 90%;
   text-align: center;
+  transition: color 0.5s ease-in-out;
+  mix-blend-mode: difference;
+  color: #fff;
+  z-index: 1;
+  /*color: var(--themes-mainColor);*/
 }
 
 .card__icon-button {
@@ -183,8 +189,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 37px;
-  height: 37px;
+  width: 39px;
+  height: 39px;
+  transition: border 0.3 ease;
+  border: 2px solid transparent;
 }
 
 .card__icon-button svg {
@@ -192,48 +200,53 @@ main {
 }
 
 .button {
-	display: inline-block;
-	overflow: hidden;
+  display: inline-block;
+  overflow: hidden;
   border: var(--themes-mainColor) 2px solid;
-  transition: box-shadow 0.5s ease,
-              background-color 0.5s ease-in-out,
-              color 0.5s ease-in-out;
+  transition: box-shadow 0.3s ease,
+              background-color 0.5s ease-in-out;
   transform: perspective(1px) translateZ(0);
+  background-color: #fff;
 }
 
 .button::before {
   content: "";
 	position: absolute;
-	z-index: -1;
+	/*z-index: -1;
 	top: 0px;
 	left: 0px;
 	right: 0px;
-	bottom: -1px;
+	bottom: -1px;*/
 	background: var(--themes-mainColor);
-	clip-path: inset(0 100% 0 0);
-	opacity: 1;
-	transition: 0.4s;
+	/*clip-path: inset(0 100% 0 0);*/
+	/*opacity: 1;*/
+  inset: 0;
+  translate: -100%;
+	transition: translate 0.5s ease-in-out;
 }
 
 .button:hover::before {
-	clip-path: inset(0 0 0 0);
+	/*clip-path: inset(0 0 0 0);*/
+  translate: 0%;
 }
 
-/*.button:hover {
-	color: white;
-}*/
-
-.button:hover .button__text {
+.button:hover .button__text, .button:hover .floppy {
   mix-blend-mode: difference;
 }
 
-.button svg {
-  transition: filter 0.4s;
+.floppy{
+  /*transition: filter 0.4s 0.4s;*/
+  color: #fff;
+  /*stroke: #fff;*/
+  mix-blend-mode: difference;
+  z-index: 1;
 }
 
-.button:hover svg {
-  filter: invert();
-}
+/*.button:hover .floppy {
+  /*transition: filter 0.4s;*/
+  /*mix-blend-mode: difference;*/
+  /*filter: invert();*/
+/*}*/
 
 .button:focus {
   outline: none;
@@ -244,7 +257,7 @@ main {
   outline: none;
 }
 
-.card__like-button:focus-visible {
+.card__icon-button:focus-visible {
   border: 2px solid var(--themes-mainColor);
 }
 
@@ -269,6 +282,10 @@ main {
   transition: fill 0.3s linear;
 }
 
+.countur {
+  transition: fill 0.1s linear;
+}
+
 .card__icon-button:hover .core {
   fill: var(--themes-mainColor);
   transition: fill 0.3s linear;
@@ -290,23 +307,28 @@ main {
 }
 
 .is-liked .core {
-  animation: anim-core 0.3s /*0.06s*/ ease-in forwards;
+  fill: var(--heart-body);
+  /*animation: anim-core 0.3s ease-in forwards;*/
+  transition: fill 0.3s linear;
 }
 
 .is-liked .main-body {
-  animation: anim-core 0.3s /*0.06s*/ ease-in forwards;
+  fill: var(--heart-body);
+  /*animation: anim-core 0.3s ease-in forwards;*/
+  transition: fill 0.3s 0.05s linear;
 }
 
 .is-liked .countur {
-  animation: anim-body 0.3s 0.36s ease-in forwards;
+  /*animation: anim-body 0.3s 0.36s ease-in forwards;*/
+  transition: fill 0.3s 0.06s linear;
 }
 
 .is-liked .heart {
-  animation: anim-heart 0.3s 0.26s ease-in forwards;
+  animation: anim-heart 0.3s 0.1s ease-in forwards;
 }
 
 .is-liked .sparks {
-  animation: anim-sparks 0.3s 0.26s ease-in forwards;
+  animation: anim-sparks 0.3s 0.3s ease-in forwards;
 }
 
 .save {
@@ -314,6 +336,7 @@ main {
   padding: 15px 19px;
   min-width: 310px;
   background-color: #fff;
+  transition: color 0.5s ease-in-out;
 }
 
 .save svg {
@@ -328,10 +351,11 @@ main {
   margin: 48px auto 103px;
 }
 
-#dialog-save {
+.dialog-save {
   background-color: #fff;
   max-width: 357px;
   padding: 31px 32px;
+  font-size: 14px;
 }
 
 .dialog-wrapper {
@@ -345,6 +369,10 @@ main {
   line-height: 150%
 }
 
+.save-dialog {
+  text-transform: uppercase;
+}
+
 #dialog-save[open]::backdrop {
   backdrop-filter: brightness(25%);
 }
@@ -355,9 +383,8 @@ main {
 }
 
 #dialog-save .button {
-  background-color: transparent;
   margin-top: 30px;
-  padding: 9px 132px;
+  padding: 10px 130px;
 }
 
 body:has(#dialog-save[open]) {
