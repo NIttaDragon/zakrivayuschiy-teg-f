@@ -10,24 +10,6 @@
 
 */
 
-@keyframes anim-core {
-  to {
-      fill: var(--heart-body);
-  }
-}
-
-@keyframes anim-body {
-  0% {
-      fill: var(--heart-body);
-  }
-  70% {
-    fill: var(--heart-body);
-  }
-  100% {
-    fill: var(--themes-mainColor);
-  }
-}
-
 @keyframes anim-heart {
   0% {
     scale: 1;
